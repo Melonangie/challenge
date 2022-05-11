@@ -1,0 +1,20 @@
+add movie entity entities:
+  title: 'Create new Movie entity entities'
+
+administer movie entity entities:
+  title: 'Administer Movie entity entities'
+  description: 'Allow to access the administration form to configure Movie entity entities.'
+  restrict access: true
+
+delete movie entity entities:
+  title: 'Delete Movie entity entities'
+
+edit movie entity entities:
+  title: 'Edit Movie entity entities'
+
+view published movie entity entities:
+  title: 'View published Movie entity entities'
+
+view unpublished movie entity entities:
+  title: 'View unpublished Movie entity entities'
+

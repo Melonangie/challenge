@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains movies.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function movies_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the movies module.
+    case 'help.page.movies':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Movies coding challenge') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function movies_theme() {
+  $theme = [];
+  $theme['movie_entity'] = [
+    'render element' => 'elements',
+    'file' => 'movie_entity.page.inc',
+    'template' => 'movie_entity',
+  ];
+  $theme['movie_entity_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'movie_entity.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function movies_theme_suggestions_movie_entity(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#movie_entity'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'movie_entity__' . $sanitized_view_mode;
+  $suggestions[] = 'movie_entity__' . $entity->bundle();
+  $suggestions[] = 'movie_entity__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'movie_entity__' . $entity->id();
+  $suggestions[] = 'movie_entity__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}

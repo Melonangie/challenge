@@ -1,0 +1,10 @@
+entity.movie_entity.add_form:
+  route_name: entity.movie_entity.add_page
+  title: 'Add Movie entity'
+  appears_on:
+    - entity.movie_entity.collection
+entity.movie_entity_type.add_form:
+  route_name: entity.movie_entity_type.add_form
+  title: 'Add Movie entity type'
+  appears_on:
+    - entity.movie_entity_type.collection
